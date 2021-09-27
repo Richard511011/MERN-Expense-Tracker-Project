@@ -1,6 +1,7 @@
 import {React,useContext} from 'react'
 import { GlobalContext } from '../context/GlobalState'
-import { IncomeAndExpenses } from './IncomeAndExpenses';
+import { numberWithCommas } from '../utils/format'
+// import { IncomeAndExpenses } from './IncomeAndExpenses';
 export const Balance = () => {
     const {transactions} = useContext(GlobalContext)
     var sum = 0;
@@ -10,7 +11,7 @@ export const Balance = () => {
         sum= sum+ element.amount;
     })
     //fixing value to 2 decimal points
-    sum.toFixed(2)
+    sum = sum.toFixed(2)
     if(sum>0){
         colorValue='green';
     }else if(sum<0){
@@ -21,7 +22,7 @@ export const Balance = () => {
     return (
         <>
             <h4>Your Balance</h4>
-            <h1 id='balance'style={{color: colorValue}}>{sum>0?'+':sum<0?'-':''}${Math.abs(sum)}</h1>
+            <h1 id='balance'style={{color: colorValue}}>{sum<0?'-':''}${numberWithCommas(Math.abs(sum))}</h1>
         </>
     )
 }

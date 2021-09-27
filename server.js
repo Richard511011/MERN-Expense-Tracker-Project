@@ -12,9 +12,12 @@ const transactions = require('./routes/transactions.js')
 const app = express();
 
 //need this for using body parser in controller/transaction.js
+app.use(express.json());
 
-app.use(express.json);
 
+if(process.env.NODE_ENV==='development'){
+    app.use(morgan('dev'));
+}
 app.use('/api/v1/transactions',transactions);
 
 //do process.env to access global variables from config.env

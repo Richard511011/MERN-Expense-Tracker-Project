@@ -10,16 +10,26 @@ export const AddTransaction = () => {
 
     const onSubmit =(e)=>{
         e.preventDefault();
+        //Check for non-zero amount
+        if(amount==0){
+            alert('please input non-zero amount');
+            setText('');
+            setAmount('');
+        }else{
+
+        
         setText('');
         setAmount('');
         // NOTE: ID is using a rng to generate, it is possible for duplicate ID's to exist, just very unlikely
         const newTransaction = {
-            id:Math.floor(Math.random()*10000000000),
+            // id:Math.floor(Math.random()*10000000000),
             text,
             amount:+amount,
         }
         addTransaction(newTransaction)
     }
+    }
+    
     return (
         <>
             <h3>Add new Transaction</h3>

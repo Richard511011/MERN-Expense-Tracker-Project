@@ -1,9 +1,10 @@
 import React from 'react'
 
 export const Header = () => {
+    //Just a header
     return (
 
-            <h2>Student Expense Tracker</h2>
+            <h2 className="titleHeader">Student Expense Tracker</h2>
 
     )
 }
